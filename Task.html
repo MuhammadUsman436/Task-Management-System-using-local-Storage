@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+
+.container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 600px;
+    transition: all 0.3s ease;
+}
+
+
+h1 {
+    font-weight: 700;
+    color: #0072ff;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.form-control {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+
+#addTaskButton {
+    background: linear-gradient(180deg, #4facfe, #00f2fe);
+    border: none;
+    font-weight: 700;
+    height: 50px;
+    border-radius: 8px;
+    padding: 0px 12px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+#addTaskButton:hover {
+    background-color: #0056b3;
+}
+
+
+.form-select {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    background-color: #e0e0e0;
+    color: #6c757d;
+}
+
+
+.high { color: #e74c3c; font-weight: bold; }
+.medium { color: #f39c12; font-weight: bold; }
+.low { color: #2ecc71; font-weight: bold; }
+
+
+#filter, #categoryFilter {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+
+.task-list {
+    padding: 0;
+    list-style: none;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    #addTaskButton, .form-select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+.task-item:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.task-info {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 65%;
+}
+
+.task-actions {
+    flex-shrink: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <input type="text" id="taskInput" class="form-control" placeholder="Enter new task">
+        <select id="priority" class="form-select">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+        </select>
+        <input type="text" id="categoryInput" class="form-control" placeholder="Enter category">
+        <div class="d-flex justify-content-between mb-3">
+            <button id="addTaskButton" class="btn">Add Task</button>
+            <select id="filter" class="form-select w-50">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+            </select>
+        </div>
+        <select id="categoryFilter" class="form-select w-100">
+            <option value="all">All Categories</option>
+        </select>
+        <ul id="taskList" class="task-list"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
